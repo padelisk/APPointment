@@ -30,6 +30,6 @@ public class AppointmentService {
 
     }
     public List<Appointment> getAppointmentList(){
-        return appointmentRepository.findAll();
+        return appointmentRepository.findAllByOrderByReserveStartAsc();
     }
 }

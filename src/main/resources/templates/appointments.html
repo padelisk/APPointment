@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Ραντεβού</h1>
+    <p th:text ="${appointments.size()}"></p>
+    <table border="1">
+        <tr>
+            <th>Πελάτης</th>
+            <th>Τηλέφωνο</th>
+            <th>Υπηρεσία</th>
+            <th>Ωρα Εναρξης</th>
+            <th>Ωρα Ληξης</th>
+        </tr>
+        <tr th:each="appointment : ${appointments}">
+
+            <td th:text="${appointment.getCustomerName()}"></td>
+            <td th:text="${appointment.getPhoneNumber()}"></td>
+            <td th:text="${appointment.getTreatment().getName()}"></td>
+            <td th:text="${#temporals.format(appointment.reserveStart, 'dd/MM/yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(appointment.reserveFinish, 'HH:mm')}"></td>
+        </tr>
+    </table>
+</body>
+</html>
